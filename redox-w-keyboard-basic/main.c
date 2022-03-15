@@ -193,6 +193,7 @@ static void read_keys(uint8_t *row_stat)
         row_stat[2] = (row_stat[2] << 1) | ((input >> R03) & 1);
         row_stat[3] = (row_stat[3] << 1) | ((input >> R04) & 1);
         row_stat[4] = (row_stat[4] << 1) | ((input >> R05) & 1);
+        row_stat[5] = (row_stat[5] << 1) | ((input >> R06) & 1);
         nrf_gpio_pin_clear(COL_PINS[c]);
     }
 
@@ -273,36 +274,6 @@ static bool check_mask(const uint8_t* keys_buffer)
 		pipe_addr_store(BASE_ADDR4, BASE_ADDR5);
 #ifdef DEBUG
 		printf("ad2\n\r");
-#endif
-		return true;
-	} else if (keys_buffer[ROW0] & MASK_COL4) {
-		pipe_addr_store(BASE_ADDR6, BASE_ADDR7);
-#ifdef DEBUG
-		printf("ad3\n\r");
-#endif
-		return true;
-	} else if (keys_buffer[ROW0] & MASK_COL5) {
-		pipe_addr_store(BASE_ADDR8, BASE_ADDR9);
-#ifdef DEBUG
-		printf("ad4\n\r");
-#endif
-		return true;
-	} else if (keys_buffer[ROW0] & MASK_COL6) {
-		pipe_addr_store(BASE_ADDR10, BASE_ADDR11);
-#ifdef DEBUG
-		printf("ad5\n\r");
-#endif
-		return true;
-	} else if (keys_buffer[ROW1] & MASK_COL6) {
-		pipe_addr_store(BASE_ADDR12, BASE_ADDR13);
-#ifdef DEBUG
-		printf("ad6\n\r");
-#endif
-		return true;
-	} else if (keys_buffer[ROW2] & MASK_COL6) {
-		pipe_addr_store(BASE_ADDR14, BASE_ADDR15);
-#ifdef DEBUG
-		printf("ad7\n\r");
 #endif
 		return true;
 	} else
@@ -386,7 +357,7 @@ static void handle_send(const uint8_t* keys_buffer)
 // 1000Hz debounce sampling
 static void tick(nrf_drv_rtc_int_type_t int_type)
 {
-    uint8_t keys_buffer[ROWS] = {0, 0, 0, 0, 0};
+    uint8_t keys_buffer[ROWS] = {0};
     read_keys(keys_buffer);
 #ifdef DEBUG
     memcpy(keys_view, keys_buffer, sizeof(keys_buffer)/sizeof(keys_buffer[0]));

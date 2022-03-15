@@ -59,6 +59,7 @@ typedef struct {
 #define R03 17
 #define R04 14
 #define R05 13
+#define R06 15
 
 #endif
 
@@ -79,11 +80,12 @@ typedef struct {
 #define R03 23
 #define R04 28
 #define R05 29
+#define R06 16
 
 #endif
 
 #define COLUMNS 7
-#define ROWS 5
+#define ROWS 6
 
 
 #ifdef COMPILE_RIGHT
@@ -92,9 +94,6 @@ typedef struct {
 #define MASK_COL1	(1 << 5)
 #define MASK_COL2	(1 << 4)
 #define MASK_COL3	(1 << 3)
-#define MASK_COL4	(1 << 2)
-#define MASK_COL5	(1 << 1)
-#define MASK_COL6	(1 << 0)
 
 #endif
 
@@ -105,9 +104,6 @@ typedef struct {
 #define MASK_COL1	(1 << 1)
 #define MASK_COL2	(1 << 2)
 #define MASK_COL3	(1 << 3)
-#define MASK_COL4	(1 << 4)
-#define MASK_COL5	(1 << 5)
-#define MASK_COL6	(1 << 6)
 
 #endif
 
@@ -118,6 +114,7 @@ enum ROWS_SPECIFIED
 	ROW2,
 	ROW3,
 	ROW4,
+	ROW5,
 };
 
 
