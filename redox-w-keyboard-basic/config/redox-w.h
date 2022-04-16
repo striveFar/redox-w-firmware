@@ -60,6 +60,7 @@ typedef struct {
 #define R04 14
 #define R05 13
 #define R06 15
+#define R07 8
 
 #endif
 
@@ -81,11 +82,12 @@ typedef struct {
 #define R04 28
 #define R05 29
 #define R06 16
+#define R07 8
 
 #endif
 
 #define COLUMNS 7
-#define ROWS 6
+#define ROWS 7
 
 
 #ifdef COMPILE_RIGHT

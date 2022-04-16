@@ -150,6 +150,8 @@ static void gpio_config(void)
     nrf_gpio_cfg_sense_input(R03, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
     nrf_gpio_cfg_sense_input(R04, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
     nrf_gpio_cfg_sense_input(R05, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
+    nrf_gpio_cfg_sense_input(R06, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
+    nrf_gpio_cfg_sense_input(R07, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
 
     nrf_gpio_cfg_output(C01);
     nrf_gpio_cfg_output(C02);
@@ -194,6 +196,7 @@ static void read_keys(uint8_t *row_stat)
         row_stat[3] = (row_stat[3] << 1) | ((input >> R04) & 1);
         row_stat[4] = (row_stat[4] << 1) | ((input >> R05) & 1);
         row_stat[5] = (row_stat[5] << 1) | ((input >> R06) & 1);
+        row_stat[6] = (row_stat[6] << 1) | ((input >> R07) & 1);
         nrf_gpio_pin_clear(COL_PINS[c]);
     }
 

@@ -24,9 +24,9 @@
 
 
 // Define payload length
-#define PAYLOAD_LENGTH 5 ///< 5 byte payload length
+#define PAYLOAD_LENGTH 7 ///< 7 byte payload length,键盘行数
 
-#define MATRIX_ROWS 10
+#define MATRIX_ROWS (2*PAYLOAD_LENGTH) //键盘行数 * 2
 
 // ticks for inactive keyboard
 // Binary printing
@@ -208,7 +208,7 @@ int main(void)
         if (app_uart_get(&c) == NRF_SUCCESS && c == 's')
         {
             // sending data to QMK, and an end byte
-            nrf_drv_uart_tx(matrix, 10);
+            nrf_drv_uart_tx(matrix, (2*PAYLOAD_LENGTH));
             app_uart_put(0xE0);
 
             // debugging help, for printing keystates to a serial console
